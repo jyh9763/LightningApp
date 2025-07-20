@@ -1,4 +1,4 @@
 ### 개발 상세
-Front: HTML/CSS
-Back: FastAPI
+Front: HTML/CSS  
+Back: FastAPI  
 DB: MySQL
