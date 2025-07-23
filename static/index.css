@@ -52,3 +52,15 @@ button {
   font-size: 12px;
   margin-left: 4px;
 }
+.date-btn {
+  background-color: #f0f0f0;
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+.date-btn:hover {
+  background-color: #d0e0ff;
+}
