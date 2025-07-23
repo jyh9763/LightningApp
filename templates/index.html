@@ -2,69 +2,37 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Calendar</title>
-    <link rel="stylesheet" href="/static/index.css">  <!-- CSS 연결 -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>2025년 7월 달력</title>
+    <link rel="stylesheet" href="/static/Index.css">
 </head>
 <body>
-    <div class="wrapper">
-        <header>
-            <div class="nav">
-              <button class="material-icons"> chevron_left </button>
-              <p class="current-date">2025 7월</p>
-              <button class="material-icons"> chevron_right </button> <!-- 오타 수정: span → button -->
+    <h1>2025년 7월</h1>
+    <div class="calendar">
+        <div class="day header">일</div>
+        <div class="day header">월</div>
+        <div class="day header">화</div>
+        <div class="day header">수</div>
+        <div class="day header">목</div>
+        <div class="day header">금</div>
+        <div class="day header">토</div>
+
+        <!-- 7월 1일은 화요일이므로, 일/월은 빈칸 -->
+        <div class="day empty"></div>
+        <div class="day empty"></div>
+
+        <!-- 날짜 + 일정 입력 -->
+        {% for day in range(1, 32) %}
+        <div class="day">
+            <div class="date">{{ day }}</div>
+            <div class="schedule">
+                <!-- <form action="/add_schedule" method="post">
+                    <input type="hidden" name="day" value="{{ day }}">
+                    <input type="text" name="event" placeholder="일정" class="event-input">
+                    <button type="submit">+</button>
+                </form> -->
             </div>
-        </header>
-        <div class="calendar">
-            <ul class="weeks">
-              <li>일</li>
-              <li>월</li>
-              <li>화</li>
-              <li>수</li>
-              <li>목</li>
-              <li>금</li>
-              <li>토</li>
-            </ul>
-            <form action="/meet" method="get">
-                <ul class="days">
-                    <li class="inactive">29</li>
-                    <li class="inactive">30</li>
-                    <li><button type="submit" name="day" value="1">1</button></li>
-                    <li><button type="submit" name="day" value="2">2</button></li>
-                    <li><button type="submit" name="day" value="3">3</button></li>
-                    <li><button type="submit" name="day" value="4">4</button></li>
-                    <li><button type="submit" name="day" value="5">5</button></li>
-                    <li><button type="submit" name="day" value="6">6</button></li>
-                    <li><button type="submit" name="day" value="7">7</button></li>
-                    <li><button type="submit" name="day" value="8">8</button></li>
-                    <li><button type="submit" name="day" value="9">9</button></li>
-                    <li><button type="submit" name="day" value="10">10</button></li>
-                    <li><button type="submit" name="day" value="11">11</button></li>
-                    <li><button type="submit" name="day" value="12">12</button></li>
-                    <li><button type="submit" name="day" value="13">13</button></li>
-                    <li><button type="submit" name="day" value="14">14</button></li>
-                    <li><button type="submit" name="day" value="15">15</button></li>
-                    <li><button type="submit" name="day" value="16">16</button></li>
-                    <li><button type="submit" name="day" value="17">17</button></li>
-                    <li><button type="submit" name="day" value="18">18</button></li>
-                    <li><button type="submit" name="day" value="19">19</button></li>
-                    <li><button type="submit" name="day" value="20">20</button></li>
-                    <li><button type="submit" name="day" value="21">21</button></li>
-                    <li><button type="submit" name="day" value="22">22</button></li>
-                    <li><button type="submit" name="day" value="23">23</button></li>
-                    <li><button type="submit" name="day" value="24">24</button></li>
-                    <li><button type="submit" name="day" value="25">25</button></li>
-                    <li><button type="submit" name="day" value="26">26</button></li>
-                    <li><button type="submit" name="day" value="27">27</button></li>
-                    <li><button type="submit" name="day" value="28">28</button></li>
-                    <li><button type="submit" name="day" value="29">29</button></li>
-                    <li><button type="submit" name="day" value="30">30</button></li>
-                    <li><button type="submit" name="day" value="31">31</button></li>
-                    <li class="inactive">1</li>
-                    <li class="inactive">2</li>
-                </ul>
-            </form>
         </div>
+        {% endfor %}
     </div>
 </body>
 </html>
