@@ -1,0 +1,32 @@
+<!-- templates/meet.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>약속</title>
+</head>
+<body>
+    <h1>7월 {{day}}일</h1>
+
+    <form action="/submit" method="post">
+        <!-- 이름 입력 -->
+        <label for="name">이름:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <!-- 시간대 선택 -->
+        <label for="time">시간대 선택:</label><br>
+        <select id="time" name="time" required>
+            <option value="morning">오전 (9:00 ~ 12:00)</option>
+            <option value="afternoon">오후 (12:00 ~ 18:00)</option>
+            <option value="evening">저녁 (18:00 ~ 21:00)</option>
+        </select><br><br>
+
+        <!-- 메모 작성 -->
+        <label for="memo">메모:</label><br>
+        <textarea id="memo" name="memo" rows="4" cols="40" placeholder="메모를 입력하세요..."></textarea><br><br>
+
+        <!-- 제출 버튼 -->
+        <button type="submit">제출</button>
+    </form>
+</body>
+</html>
