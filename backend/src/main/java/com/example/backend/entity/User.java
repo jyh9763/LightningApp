@@ -1,9 +1,7 @@
 package com.example.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
@@ -12,8 +10,11 @@ import java.time.LocalDateTime;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;                // DB의 고유(?) 아이디
+
     @Column(name = "user_id")
-    private String userId;          // 아이디
+    private String userId;          // 회원 아이디
     
     @Column(name = "password")
     private String userPassword;    // 비밀번호

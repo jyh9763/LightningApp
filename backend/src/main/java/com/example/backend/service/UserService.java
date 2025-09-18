@@ -15,7 +15,7 @@ public class UserService {
 
     // 로그인
     public String SignIn(User user){
-        Optional<User> byUserId = userRepository.findById(user.getUserId());
+        Optional<User> byUserId = userRepository.findByUserId(user.getUserId());
 
         // 로그인 시도한 id가 DB에 저장되어 있다면
         if(byUserId.isPresent()){
@@ -27,16 +27,16 @@ public class UserService {
                 return "success";
             } else {
                 // 비밀번호 틀리면 실패
-                return "fail";
+                return "passwordFail";
             }
         } else {    // id가 DB에 없으면 실패
-            return "fail";
+            return "idFail";
         }
     }
 
     // 회원가입
     public String SignUp(User user) {
-        Optional<User> byRegisterId = userRepository.findById(user.getUserId());
+        Optional<User> byRegisterId = userRepository.findByUserId(user.getUserId());
 
         // id가 비어있으면
         if (user.getUserId().isEmpty()) {

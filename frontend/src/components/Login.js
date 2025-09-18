@@ -18,7 +18,11 @@ function Login({setPage}){
                     alert("로그인에 성공하였습니다.");
                     setPage("main");
                 } else{
-                    alert("로그인에 실패하였습니다.");
+                    if (response.data === "idFail"){
+                        alert("아이디가 틀렸습니다.");
+                    } else if (response.data === "passwordFail"){
+                        alert("비밀번호가 틀렸습니다.");
+                    }
                 }
             })
             .catch((error) => {
