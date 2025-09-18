@@ -25,7 +25,7 @@ public class UserController {
     }
 
     // 회원가입
-    @PostMapping("/users/register")
+    @PostMapping("/users/signup")
     public String UserRegister(@RequestBody User user){
 
         // 디버깅

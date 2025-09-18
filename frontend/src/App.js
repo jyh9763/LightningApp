@@ -1,24 +1,29 @@
 import './App.css';
-import {useState} from "react";
 import axios from "axios";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import Main from "./pages/Main";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 export default function App() {
-  // 첫 페이지
-  const [page, setPage] = useState("login");
-
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>{page === "register" ? "회원가입" : "어서오세요"}</h1>
+        <BrowserRouter>
+            <Routes>
+                {/* 기본 경로 */}
+                <Route path="/" element={<Navigate to="/login" replace />} />
 
-          {/* 로그인 */}
-          {page === "login" && <Login setPage={setPage}/>}
+                {/* 로그인 페이지 */}
+                <Route path="/login" element={<Login />} />
 
-          {/* 회원가입 */}
-          {page === "register" && <Register setPage={setPage}/>}
-      </header>
+                {/* 회원가입 페이지 */}
+                <Route path="/signup" element={<Signup />} />
+
+                {/* 메인 페이지 */}
+                <Route path="/main" element={<Main />} />
+            </Routes>
+        </BrowserRouter>
     </div>
+
   );
 }

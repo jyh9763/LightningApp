@@ -1,7 +1,11 @@
 import axios from "axios";
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
-export default function Register({setPage}){
+export default function Signup(){
+
+    const navigate = useNavigate();
+
     // 회원가입 변수
     const [registerId, setRegisterId] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
@@ -18,11 +22,11 @@ export default function Register({setPage}){
         };
 
         axios
-            .post("http://localhost:8080/api/users/register", data)
+            .post("http://localhost:8080/api/users/signup", data)
             .then((response) =>{
                 if(response.data === "success"){
                     alert("회원가입에 성공하였습니다.");
-                    setPage("login");
+                    navigate("/login");
                 } else {
                     if (response.data === "IDexist"){
                         alert("이미 존재하는 아이디입니다.");
@@ -98,7 +102,7 @@ export default function Register({setPage}){
 
                 <button
                   className="login-button"
-                  onClick={() => setPage("login")}
+                  onClick={() => navigate("/login")}
                 >
                   로그인으로 돌아가기
                 </button>

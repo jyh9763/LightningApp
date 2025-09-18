@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
-export default function Login({setPage}){
+export default function Login(){
+
+    const navigate = useNavigate();
+
     const [loginId, setLoginId] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
 
@@ -16,7 +20,7 @@ export default function Login({setPage}){
             .then((response) => {
                 if(response.data === "success"){
                     alert("로그인에 성공하였습니다.");
-                    setPage("main");
+                    navigate("/main");
                 } else{
                     if (response.data === "idFail"){
                         alert("아이디가 틀렸습니다.");
@@ -69,7 +73,7 @@ export default function Login({setPage}){
                 {/* 버튼 클릭 시 회원가입 페이지로 이동 */}
                 <button
                     className="register-button"
-                    onClick={() => setPage("register")}
+                    onClick={() => navigate("/signup")}
                 >
                     회원가입
                 </button>
