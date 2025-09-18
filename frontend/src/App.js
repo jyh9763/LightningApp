@@ -4,7 +4,7 @@ import axios from "axios";
 import Login from "./components/Login";
 import Register from "./components/Register";
 
-function App() {
+export default function App() {
   // 첫 페이지
   const [page, setPage] = useState("login");
 
@@ -22,5 +22,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

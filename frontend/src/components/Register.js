@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, {useState} from "react";
 
-function Register({setPage}){
+export default function Register({setPage}){
     // 회원가입 변수
     const [registerId, setRegisterId] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
@@ -106,5 +106,3 @@ function Register({setPage}){
         </div>
     );
 }
-
-export default Register;
