@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import axios from "axios";
-export default Login;
 
 function Login({setPage}){
     const [loginId, setLoginId] = useState("");
@@ -15,7 +14,7 @@ function Login({setPage}){
         axios
             .post("http://localhost:8080/api/users/login", data)
             .then((response) => {
-                if(response.data === "main"){
+                if(response.data === "success"){
                     alert("로그인에 성공하였습니다.");
                     setPage("main");
                 } else{
@@ -74,3 +73,5 @@ function Login({setPage}){
         </div>
     );
 }
+
+export default Login;

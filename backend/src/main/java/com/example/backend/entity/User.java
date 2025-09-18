@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -22,7 +23,8 @@ public class User {
     
     @Column(name = "user_address")
     private String userAddress;     // 거주 지역
-    
+
+    @CreationTimestamp
     @Column(name = "user_date")
     private LocalDateTime userDate;        // 가입일자
 
