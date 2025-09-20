@@ -4,6 +4,7 @@ import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import Main from "./pages/Main";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Meet from "./pages/Meet";
 
 export default function App() {
   return (
@@ -21,6 +22,9 @@ export default function App() {
 
                 {/* 메인 페이지 */}
                 <Route path="/main" element={<Main />} />
+
+                {/* 약속 잡는 페이지 */}
+                <Route path="/meet" element={<Meet />} />
             </Routes>
         </BrowserRouter>
     </div>
