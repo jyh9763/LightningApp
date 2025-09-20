@@ -36,4 +36,7 @@ public class UserController {
 
         return userService.SignUp(user);
     }
+    
+    // 로그아웃
+    //@PostMapping("/users/logout")
 }
