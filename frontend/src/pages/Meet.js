@@ -1,8 +1,42 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Meet.css";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 export default function Meet(){
+    const navigate = useNavigate();
+
+    // Meet 변수
+    //const [meetId, setMeetId] = useState("");
+    const [title, setTitle] = useState("");
+    const [meetAddress, setMeetAddress] = useState("서울시");
+    const [meetStart, setMeetStart] = useState("");
+    const [meetEnd, setMeetEnd] = useState("");
+
+    // 제출 작동
+    function handleSubmit(){
+        const data={
+            title: title,
+            meetAddress: meetAddress,
+            meetStart: meetStart,
+            meetEnd: meetEnd
+        };
+
+        axios
+            .post("http://localhost:8080/api/meet", data)
+            .then((response) =>{
+                if(response.data === "success"){
+                    alert("약속이 저장되었습니다.");
+                    navigate("/main");
+                } else{
+                    alert("약속을 저장하지 못했습니다.");
+                }
+            })
+            .catch((error) =>{
+                console.error(error);
+                alert("약속을 저장하는데 오류가 발생했습니다.");
+            })
+    }
 
     // html
     return (
@@ -64,15 +98,21 @@ export default function Meet(){
                                     type="text"
                                     id="title"
                                     className="input-type"
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
                                 />
                             </div>
 
                             {/* 만나는 지역 */}
                             <div className="form-group">
                                 <label className="form-label">만나는 지역</label>
-                                <select name="country" id="count">
+                                <select name="country" id="country"
+                                    value={meetAddress}
+                                    onChange={(e) => setMeetAddress(e.target.value)}
+                                >
+                                    <option value="s1">서울시</option>
                                     <option value="a">안성시</option>
-                                    <option value="s">수원시</option>
+                                    <option value="s2">수원시</option>
                                     <option value="d">대전시</option>
                                 </select>
                             </div>
@@ -85,14 +125,20 @@ export default function Meet(){
                             {/* 시작/끝 시간 */}
                             <div className="form-group">
                                 <label className="form-label">시작 시간</label>
-                                <select name="start" id="st">
+                                <select name="start" id="st"
+                                    value={meetStart}
+                                    onChange={(e) => setMeetStart(e.target.value)}
+                                >
                                     <option value="1100">11:00</option>
                                     <option value="1200">12:00</option>
                                     <option value="1300">13:00</option>
                                 </select>
 
                                 <label className="form-label">끝나는 시간</label>
-                                <select name="end" id="et">
+                                <select name="end" id="et"
+                                    value={meetEnd}
+                                    onChange={(e) => setMeetEnd(e.target.value)}
+                                >
                                     <option value="1200">12:00</option>
                                     <option value="1300">13:00</option>
                                     <option value="1400">14:00</option>
@@ -110,7 +156,9 @@ export default function Meet(){
 
                             {/* 버튼 영역 */}
                             <div className="button-group">
-                                <button className="btn-save">
+                                <button className="btn-save"
+                                    onClick={() => handleSubmit()}
+                                >
                                     저장
                                 </button>
                                 <button className="btn-cancel">
