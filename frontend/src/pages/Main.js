@@ -19,6 +19,9 @@ export default function Main(){
     const todayM = today.getMonth();
     const todayD = today.getDate();
 
+    // 요일 이름
+    const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+
     // 현재 월 1일의 요일
     const firstWeek = new Date(currentY, currentM, 1).getDay();
     // 현재 월의 마지막 날짜(다음 달의 0일)
@@ -95,13 +98,9 @@ export default function Main(){
                     <div className="calendar">
                         <div className="calendar-header">
                             <div className="weekdays">
-                                <div className="weekday">일</div>
-                                <div className="weekday">월</div>
-                                <div className="weekday">화</div>
-                                <div className="weekday">수</div>
-                                <div className="weekday">목</div>
-                                <div className="weekday">금</div>
-                                <div className="weekday">토</div>
+                                {weekdays.map((weekday, wdi) => (
+                                    <div key={wdi} className="weekday">{weekday}</div>
+                                ))}
                             </div>
                         </div>
 
@@ -115,16 +114,25 @@ export default function Main(){
                                             className={`calendar-cell ${day ? "": "empty"}`}
                                         >
                                             <div className="date-row">
-                                                <button className='appointment-add' onClick={() => navigate("/meet")}>
-                                                    +
-                                                </button>
-                                                {day &&
-                                                <div className={`date-number ${
-                                                   day === todayD && currentM === todayM && currentY === todayY
-                                                   ? "today": ""
-                                                }`}>
-                                                    {day}
-                                                </div>}
+                                                {day && (
+                                                    <>  {/* 버튼과 날짜 두 개를 동시에 렌더링하려면 하나의 부모로 묶는 작업 필요
+                                                        -> dom 쓰고싶지 않은데 하나로 묶고싶을 때 사용 */}
+                                                        <button
+                                                            className='appointment-add'
+                                                            onClick={() => navigate("/meet",
+                                                            // 페이지 이동 시 데이터 보내기
+                                                            {state: {month: currentM+1, day: day, weekday: weekdays[di]}})}
+                                                        >
+                                                            +
+                                                        </button>
+                                                        <div className={`date-number ${
+                                                           day === todayD && currentM === todayM && currentY === todayY
+                                                           ? "today": ""
+                                                        }`}>
+                                                            {day}
+                                                        </div>
+                                                    </>
+                                                )}
                                             </div>
                                         </div>
                                     ))}

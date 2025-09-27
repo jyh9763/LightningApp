@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./Meet.css";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import axios from "axios";
 
 export default function Meet(){
@@ -12,6 +12,10 @@ export default function Meet(){
     const [meetAddress, setMeetAddress] = useState("서울시");
     const [meetStart, setMeetStart] = useState("");
     const [meetEnd, setMeetEnd] = useState("");
+
+    // main 페이지에서 추가하고 싶은 약속의 날짜를 받아오기 위한 변수
+    const location = useLocation();
+    const {month, day, weekday} = location.state || {};
 
     // 제출 작동
     function handleSubmit(){
@@ -61,13 +65,6 @@ export default function Meet(){
 
                 {/* 메인 컨텐츠 영역 */}
                 <div className="main-content">
-                    {/* 상단 날짜 박스 */}
-                    <div className="date-box">
-                        <div className="month">9월</div>
-                        <div className="day">20</div>
-                        <div className="weekday">(토)</div>
-                    </div>
-
                     {/* 헤더 */}
                     <div className="header">
                         <div className="page-title">약속 잡기</div>
@@ -86,6 +83,13 @@ export default function Meet(){
                                 로그아웃
                             </button>
                         </div>
+                    </div>
+
+                    {/* 상단 날짜 박스 */}
+                    <div className="date-box">
+                        <div className="month">{month}</div>
+                        <div className="day">{day}</div>
+                        <div className="weekday">({weekday})</div>
                     </div>
 
                     {/* 약속 만들기 폼 */}
