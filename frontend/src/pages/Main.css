@@ -161,7 +161,7 @@ body {
 }
 
 .weekday {
-    padding: 15px;
+    padding: 5px;
     text-align: center;
     font-weight: 600;
     color: #666;
@@ -190,7 +190,9 @@ body {
 }
 
 .calendar-cell {
-    min-height: 120px;
+    display: flex;
+    flex-direction: column;     /* 위에서 아래로 쌓기 */
+    min-height: 110px;
     padding: 10px;
     border-right: 1px solid #e0e0e0;
     position: relative;
@@ -206,11 +208,18 @@ body {
 }
 
 .date-number {
-    float: right;
-    font-size: 14px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 8px;
+  align-self: flex-end;
+  font-size: 14px;
+  color: #333;
+  font-weight: 600;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.date-number.today {
+  background-color: red;   /* 빨간 네모 */
+  color: white;            /* 글자는 흰색 */
+  font-weight: bold;
 }
 
 /* 일정 및 약속 아이템 */
@@ -218,10 +227,11 @@ body {
 .appointment-item {
     font-size: 11px;
     padding: 4px 6px;
-    margin-bottom: 3px;
+    margin-top: 2px;
     border-radius: 3px;
     word-wrap: break-word;
     line-height: 1.2;
+    text-align: left;
 }
 
 .schedule-item {

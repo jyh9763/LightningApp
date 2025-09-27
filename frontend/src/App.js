@@ -1,10 +1,10 @@
 import './App.css';
-import axios from "axios";
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import Main from "./pages/Main";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Meet from "./pages/Meet";
+import Main2 from "./pages/Main2";
 
 export default function App() {
   return (
@@ -22,6 +22,7 @@ export default function App() {
 
                 {/* 메인 페이지 */}
                 <Route path="/main" element={<Main />} />
+                <Route path="/main2" element={<Main2 />} />
 
                 {/* 약속 잡는 페이지 */}
                 <Route path="/meet" element={<Meet />} />
