@@ -190,7 +190,6 @@ body {
 }
 
 .calendar-cell {
-    display: flex;
     flex-direction: column;     /* 위에서 아래로 쌓기 */
     min-height: 110px;
     padding: 10px;
@@ -207,8 +206,14 @@ body {
     background-color: #f9f9f9;
 }
 
+.date-row{
+    display: flex;
+    justify-content: space-between;     /* 좌우로 배치 */
+    align-items: center;                /* 세로 가운데 정렬 */
+    margin-bottom: 4px;
+}
+
 .date-number {
-  align-self: flex-end;
   font-size: 14px;
   color: #333;
   font-weight: 600;
@@ -220,6 +225,16 @@ body {
   background-color: red;   /* 빨간 네모 */
   color: white;            /* 글자는 흰색 */
   font-weight: bold;
+}
+
+.appointment-add {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 1px 5px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
 }
 
 /* 일정 및 약속 아이템 */

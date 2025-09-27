@@ -1,7 +1,11 @@
 import React from "react";
 import './Main.css';
+import {useNavigate} from "react-router-dom";
 
 export default function Main(){
+
+    // nagivate 객체
+    const navigate = useNavigate();
 
     // 현재 날짜 객체
     const today = new Date();
@@ -87,7 +91,7 @@ export default function Main(){
 
                 {/* 달력 영역 */}
                 <div className="calendar-container">
-                    <h2>{currentY}년 {currentM}월</h2>
+                    <h2>{currentY}년 {currentM+1}월</h2>
                     <div className="calendar">
                         <div className="calendar-header">
                             <div className="weekdays">
@@ -110,13 +114,18 @@ export default function Main(){
                                             key={di}
                                             className={`calendar-cell ${day ? "": "empty"}`}
                                         >
-                                            {day &&
-                                            <div className={`date-number ${
-                                               day === todayD && currentM === todayM && currentY === todayY
-                                               ? "today": ""
-                                            }`}>
-                                                {day}
-                                            </div>}
+                                            <div className="date-row">
+                                                <button className='appointment-add' onClick={() => navigate("/meet")}>
+                                                    +
+                                                </button>
+                                                {day &&
+                                                <div className={`date-number ${
+                                                   day === todayD && currentM === todayM && currentY === todayY
+                                                   ? "today": ""
+                                                }`}>
+                                                    {day}
+                                                </div>}
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
