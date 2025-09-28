@@ -87,7 +87,7 @@ export default function Meet(){
 
                     {/* 상단 날짜 박스 */}
                     <div className="date-box">
-                        <div className="month">{month}</div>
+                        <div className="month">{month}월</div>
                         <div className="day">{day}</div>
                         <div className="weekday">({weekday})</div>
                     </div>
@@ -110,7 +110,10 @@ export default function Meet(){
                             {/* 만나는 지역 */}
                             <div className="form-group">
                                 <label className="form-label">만나는 지역</label>
-                                <select name="country" id="country"
+                                <select
+                                    name="country"
+                                    id="country"
+                                    className="form-select"
                                     value={meetAddress}
                                     onChange={(e) => setMeetAddress(e.target.value)}
                                 >
@@ -125,29 +128,38 @@ export default function Meet(){
                             <div className="form-group">
                                 <label className="form-label">약속 시간</label>
                             </div>
-
-                            {/* 시작/끝 시간 */}
                             <div className="form-group">
-                                <label className="form-label">시작 시간</label>
-                                <select name="start" id="st"
-                                    value={meetStart}
-                                    onChange={(e) => setMeetStart(e.target.value)}
-                                >
-                                    <option value="1100">11:00</option>
-                                    <option value="1200">12:00</option>
-                                    <option value="1300">13:00</option>
-                                </select>
+                                <div className="time-selector">
+                                    {/* 시작 시간 */}
+                                    <select
+                                        name="start"
+                                        id="st"
+                                        className="time-select"
+                                        value={meetStart}
+                                        onChange={(e) => setMeetStart(e.target.value)}
+                                    >
+                                        <option value="1100">11:00</option>
+                                        <option value="1200">12:00</option>
+                                        <option value="1300">13:00</option>
+                                    </select>
 
-                                <label className="form-label">끝나는 시간</label>
-                                <select name="end" id="et"
-                                    value={meetEnd}
-                                    onChange={(e) => setMeetEnd(e.target.value)}
-                                >
-                                    <option value="1200">12:00</option>
-                                    <option value="1300">13:00</option>
-                                    <option value="1400">14:00</option>
-                                </select>
+                                    <span className="time-separator"> ~ </span>
+
+                                    {/* 끝나는 시간 */}
+                                    <select
+                                        name="end"
+                                        id="et"
+                                        className="time-select"
+                                        value={meetEnd}
+                                        onChange={(e) => setMeetEnd(e.target.value)}
+                                    >
+                                        <option value="1200">12:00</option>
+                                        <option value="1300">13:00</option>
+                                        <option value="1400">14:00</option>
+                                    </select>
+                                </div>
                             </div>
+
 
                             {/* 약속 내용 */}
                             <div className="form-group">
