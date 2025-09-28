@@ -137,9 +137,13 @@ body {
 
 /* 달력 컨테이너 */
 .calendar-container {
-    padding: 30px;
+    padding: 20px;
     height: calc(100vh - 100px);
     overflow: auto;
+}
+
+.calendar-month {
+    margin-bottom: 20px;
 }
 
 .calendar {
@@ -160,16 +164,17 @@ body {
     grid-template-columns: repeat(7, 1fr);
 }
 
-.weekday {
+.main-weekday {
     padding: 5px;
     text-align: center;
-    font-weight: 600;
-    color: #666;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
     background-color: #f8f9fa;
     border-right: 1px solid #e0e0e0;
 }
 
-.weekday:last-child {
+.main-weekday:last-child {
     border-right: none;
 }
 

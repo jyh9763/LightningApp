@@ -94,12 +94,12 @@ export default function Main(){
 
                 {/* 달력 영역 */}
                 <div className="calendar-container">
-                    <h2>{currentY}년 {currentM+1}월</h2>
+                    <h2 className="calendar-month">{currentY}년 {currentM+1}월</h2>
                     <div className="calendar">
                         <div className="calendar-header">
                             <div className="weekdays">
                                 {weekdays.map((weekday, wdi) => (
-                                    <div key={wdi} className="weekday">{weekday}</div>
+                                    <div key={wdi} className="main-weekday">{weekday}</div>
                                 ))}
                             </div>
                         </div>
@@ -138,12 +138,10 @@ export default function Main(){
                                     ))}
                                 </div>
                             ))}
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     );
-
 }
