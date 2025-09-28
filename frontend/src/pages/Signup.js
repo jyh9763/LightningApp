@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import "./Login.css";
 
 export default function Signup(){
 
@@ -42,70 +43,72 @@ export default function Signup(){
     }
 
     return (
-        <div className="login-box">
-            <div className="input-group">
-                <label htmlFor="reg_id">아이디</label>
-                <input
-                  type="text"
-                  id="reg_id"
-                  placeholder="Id"
-                  className="input-field"
-                  value={registerId}
-                  onChange={(e) => setRegisterId(e.target.value)}
-                />
-            </div>
+        <div className="register-container">
+            <div className="register-box">
+                <div className="input-group">
+                    <label htmlFor="reg_id">아이디</label>
+                    <input
+                      type="text"
+                      id="reg_id"
+                      placeholder="Id"
+                      className="input-field"
+                      value={registerId}
+                      onChange={(e) => setRegisterId(e.target.value)}
+                    />
+                </div>
 
-            <div className="input-group">
-                <label htmlFor="reg_password">비밀번호</label>
-                <input
-                  type="password"
-                  id="reg_password"
-                  placeholder="Password"
-                  className="input-field"
-                  value={registerPassword}
-                  onChange={(e) => setRegisterPassword(e.target.value)}
-                />
-            </div>
+                <div className="input-group">
+                    <label htmlFor="reg_password">비밀번호</label>
+                    <input
+                      type="password"
+                      id="reg_password"
+                      placeholder="Password"
+                      className="input-field"
+                      value={registerPassword}
+                      onChange={(e) => setRegisterPassword(e.target.value)}
+                    />
+                </div>
 
-            <div className="input-group">
-                <label htmlFor="reg_name">이름</label>
-                <input
-                  type="text"
-                  id="reg_name"
-                  placeholder="Name"
-                  className="input-field"
-                  value={registerName}
-                  onChange={(e) => setRegisterName(e.target.value)}
-                />
-            </div>
+                <div className="input-group">
+                    <label htmlFor="reg_name">이름</label>
+                    <input
+                      type="text"
+                      id="reg_name"
+                      placeholder="Name"
+                      className="input-field"
+                      value={registerName}
+                      onChange={(e) => setRegisterName(e.target.value)}
+                    />
+                </div>
 
-            <div className="input-group">
-                <label htmlFor="reg_address">거주 지역</label>
-                <input
-                  type="text"
-                  id="reg_address"
-                  placeholder="country"
-                  className="input-field"
-                  value={registerAddress}
-                  onChange={(e) => setRegisterAddress(e.target.value)}
-                />
-            </div>
+                <div className="input-group">
+                    <label htmlFor="reg_address">거주 지역</label>
+                    <input
+                      type="text"
+                      id="reg_address"
+                      placeholder="country"
+                      className="input-field"
+                      value={registerAddress}
+                      onChange={(e) => setRegisterAddress(e.target.value)}
+                    />
+                </div>
 
-            <div className="button-group">
-                {/* 회원가입이 정상적으로 되면 버튼 클릭 시 로그인 페이지로 이동 */}
-                <button
-                  className="register-button"
-                  onClick={() => handleRegister()}
-                >
-                  회원가입
-                </button>
+                <div className="button-group">
+                    {/* 회원가입이 정상적으로 되면 버튼 클릭 시 로그인 페이지로 이동 */}
+                    <button
+                      className="register-button"
+                      onClick={() => handleRegister()}
+                    >
+                      회원가입
+                    </button>
 
-                <button
-                  className="login-button"
-                  onClick={() => navigate("/login")}
-                >
-                  로그인으로 돌아가기
-                </button>
+                    <button
+                      className="login-button"
+                      onClick={() => navigate("/login")}
+                    >
+                      로그인
+                    </button>
+                </div>
             </div>
         </div>
     );
