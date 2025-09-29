@@ -1,8 +1,10 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.UserDto;
 import com.example.backend.entity.User;
 import com.example.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,13 +17,14 @@ public class UserController {
 
     // 로그인
     @PostMapping("/users/login")
-    public String UserLogin(@RequestBody User user){
+    public ResponseEntity<UserDto.LoginResponse> UserLogin(@RequestBody UserDto.LoginRequest req){
 
         // 디버깅
-        System.out.println(user.getUserId());
-        System.out.println(user.getUserPassword());
+        System.out.println(req.getLoginId());
+        System.out.println(req.getLoginPassword());
 
-        return userService.SignIn(user);
+        UserDto.LoginResponse loginRes = userService.SignIn(req.getLoginId(), req.getLoginPassword());
+        return ResponseEntity.ok(loginRes);
     }
 
     // 회원가입

@@ -2,7 +2,9 @@ package com.example.backend.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.cglib.core.Local;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,19 +14,22 @@ public class Meet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long meetId;
 
-    @Column(name="title")
+    @Column(name="creator_id", nullable = false)
+    private Long creatorId;
+
+    @Column(name="title", nullable = false)
     private String title;
 
     @Column(name="meet_address")
     private String meetAddress;
 
     @Column(name="meet_start")
-    private String meetStart;
+    private LocalDateTime meetStart;
 
     @Column(name="meet_end")
-    private String meetEnd;
+    private LocalDateTime meetEnd;
 
-    @Column(name="meet_date")
+    @Column(name="meet_create")
     @CreationTimestamp
     private LocalDateTime meetDate;
 
@@ -34,6 +39,14 @@ public class Meet {
 
     public void setMeetId(Long meetId) {
         this.meetId = meetId;
+    }
+
+    public Long getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(Long creatorId) {
+        this.creatorId = creatorId;
     }
 
     public String getTitle() {
@@ -52,19 +65,19 @@ public class Meet {
         this.meetAddress = meetAddress;
     }
 
-    public String getMeetStart() {
+    public LocalDateTime getMeetStart() {
         return meetStart;
     }
 
-    public void setMeetStart(String meetStart) {
+    public void setMeetStart(LocalDateTime meetStart) {
         this.meetStart = meetStart;
     }
 
-    public String getMeetEnd() {
+    public LocalDateTime getMeetEnd() {
         return meetEnd;
     }
 
-    public void setMeetEnd(String meetEnd) {
+    public void setMeetEnd(LocalDateTime meetEnd) {
         this.meetEnd = meetEnd;
     }
 

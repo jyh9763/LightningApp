@@ -1,5 +1,6 @@
 package com.example.backend.service;
 
+import com.example.backend.dto.UserDto;
 import com.example.backend.entity.User;
 import com.example.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,23 +15,31 @@ public class UserService {
     private final UserRepository userRepository;
 
     // 로그인
-    public String SignIn(User user){
-        Optional<User> byUserId = userRepository.findByUserId(user.getUserId());
+    public UserDto.LoginResponse SignIn(String loginId, String loginPassword){
+
+        UserDto.LoginResponse res = new UserDto.LoginResponse();
+        Optional<User> byUserId = userRepository.findByUserId(loginId);
 
         // 로그인 시도한 id가 DB에 저장되어 있다면
         if(byUserId.isPresent()){
             User userid = byUserId.get();   // Optional에서 id를 꺼냄
 
             // 로그인 시도한 비밀번호가 일치하면
-            if(userid.getUserPassword().equals(user.getUserPassword())){
+            if(userid.getUserPassword().equals(loginPassword)){
                 // 성공
-                return "success";
+                res.setStatus("success");
+                res.setUserId(userid.getId());
+                res.setUuId(userid.getUserId());
+
+                return res;
             } else {
                 // 비밀번호 틀리면 실패
-                return "passwordFail";
+                res.setStatus("passwordFail");
+                return res;
             }
         } else {    // id가 DB에 없으면 실패
-            return "idFail";
+            res.setStatus("idFail");
+            return res;
         }
     }
 

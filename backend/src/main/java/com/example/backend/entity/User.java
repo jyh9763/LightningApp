@@ -13,10 +13,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;                // DB의 고유(?) 아이디
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     private String userId;          // 회원 아이디
     
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String userPassword;    // 비밀번호
     
     @Column(name = "user_name")
@@ -28,6 +28,14 @@ public class User {
     @CreationTimestamp
     @Column(name = "user_date")
     private LocalDateTime userDate;        // 가입일자
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getUserId() {
         return userId;
