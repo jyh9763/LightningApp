@@ -3,7 +3,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import "./Login.css";
 
-export default function Login(){
+export default function Login({setUser}){
 
     const navigate = useNavigate();
 
@@ -12,20 +12,30 @@ export default function Login(){
 
     function handleLogin(){
         const data = {
-            userId: loginId,
-            userPassword: loginPassword
+            loginId: loginId,
+            loginPassword: loginPassword
         };
 
         axios
             .post("http://localhost:8080/api/users/login", data)
             .then((response) => {
-                if(response.data === "success"){
+                const res = response.data;
+
+                if(res.status === "success"){
                     alert("로그인에 성공하였습니다.");
+                    // sessitonStorage에 로그인 정보 저장
+                    sessionStorage.setItem("userId", res.userId);
+                    sessionStorage.setItem("uuId", res.uuId);
+
+                    // react 상태에도 저장
+                    setUser({userId: res.userId, uuId: res.uuId});
+
+                    //페이지 이동 + 로그인 정보 전달
                     navigate("/main");
                 } else{
-                    if (response.data === "idFail"){
+                    if (res.status === "idFail"){
                         alert("아이디가 틀렸습니다.");
-                    } else if (response.data === "passwordFail"){
+                    } else if (res.status === "passwordFail"){
                         alert("비밀번호가 틀렸습니다.");
                     }
                 }

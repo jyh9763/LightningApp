@@ -6,20 +6,36 @@ import axios from "axios";
 export default function Meet(){
     const navigate = useNavigate();
 
-    // Meet 변수
-    //const [meetId, setMeetId] = useState("");
-    const [title, setTitle] = useState("");
-    const [meetAddress, setMeetAddress] = useState("서울시");
-    const [meetStart, setMeetStart] = useState("");
-    const [meetEnd, setMeetEnd] = useState("");
-
     // main 페이지에서 추가하고 싶은 약속의 날짜를 받아오기 위한 변수
     const location = useLocation();
-    const {month, day, weekday} = location.state || {};
+    const {year, month, day, weekday} = location.state || {};
+
+    // Meet 변수
+    //const [meetId, setMeetId] = useState("");
+    const uuId = sessionStorage.getItem("uuId");
+    const [title, setTitle] = useState("");
+    const [meetAddress, setMeetAddress] = useState("서울시");
+    const [startTime, setStartTime] = useState("");
+    const [endTime, setEndTime] = useState("");
+
+    const meetStart = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}T${startTime}:00`;
+    const meetEnd = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}T${endTime}:00`;
+
+    // 약속 시간
+    const times = [
+        "00:00", "01:00", "02:00", "03:00", "04:00",
+        "05:00", "06:00", "07:00", "08:00", "09:00",
+        "10:00", "11:00", "12:00", "13:00", "14:00",
+        "15:00", "16:00", "17:00", "18:00", "19:00",
+        "20:00", "21:00", "22:00", "23:00"
+    ];
 
     // 제출 작동
     function handleSubmit(){
+        const creatorId = sessionStorage.getItem("userId");
+
         const data={
+            creatorId: creatorId,
             title: title,
             meetAddress: meetAddress,
             meetStart: meetStart,
@@ -77,7 +93,7 @@ export default function Meet(){
                                     className="profile-image"
 
                                 />
-                                <span className="username">나</span>
+                                <span className="username">{uuId}</span>
                             </div>
                             <button className="logout-btn">
                                 로그아웃
@@ -135,12 +151,15 @@ export default function Meet(){
                                         name="start"
                                         id="st"
                                         className="time-select"
-                                        value={meetStart}
-                                        onChange={(e) => setMeetStart(e.target.value)}
+                                        value={startTime}
+                                        onChange={(e) => setStartTime(e.target.value)}
                                     >
-                                        <option value="1100">11:00</option>
-                                        <option value="1200">12:00</option>
-                                        <option value="1300">13:00</option>
+                                        <option value="">-- 선택 --</option>
+                                        {times.map((time) => (
+                                            <option key={time} value={time}>
+                                                {time}
+                                            </option>
+                                        ))}
                                     </select>
 
                                     <span className="time-separator"> ~ </span>
@@ -150,12 +169,17 @@ export default function Meet(){
                                         name="end"
                                         id="et"
                                         className="time-select"
-                                        value={meetEnd}
-                                        onChange={(e) => setMeetEnd(e.target.value)}
+                                        value={endTime}
+                                        onChange={(e) => setEndTime(e.target.value)}
                                     >
-                                        <option value="1200">12:00</option>
-                                        <option value="1300">13:00</option>
-                                        <option value="1400">14:00</option>
+                                        <option value="">-- 선택 --</option>
+                                        {times
+                                            .filter((time) => !startTime || time>startTime) // 시작 시간이랑 같거나, 작으면 안됨
+                                            .map((time) => (
+                                                <option key={time} value={time}>
+                                                    {time}
+                                                </option>
+                                            ))}
                                     </select>
                                 </div>
                             </div>
@@ -177,7 +201,8 @@ export default function Meet(){
                                 >
                                     저장
                                 </button>
-                                <button className="btn-cancel">
+                                <button className="btn-cancel"
+                                    onClick ={() => navigate("/main")}>
                                     취소
                                 </button>
                             </div>

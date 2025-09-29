@@ -115,9 +115,10 @@ body {
     transform: scale(1.1);
 }
 
-.username {
-    font-size: 14px;
+.userid {
+    font-size: 16px;
     color: #666;
+    font-weight: 600;
 }
 
 .logout-btn {
@@ -240,6 +241,10 @@ body {
     background-color: #f8f9fa;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
+}
+
+.appointment-add:hover {
+    transform: scale(1.1);
 }
 
 /* 일정 및 약속 아이템 */

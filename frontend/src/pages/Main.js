@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import './Main.css';
 import {useNavigate} from "react-router-dom";
 
@@ -6,6 +6,22 @@ export default function Main(){
 
     // nagivate 객체
     const navigate = useNavigate();
+
+    // 로그인 정보 받아오기
+    const [user, setUser] = useState({userId: null, uuId: null});
+
+    useEffect(() => {
+        // 새로고침 시 sessionStorage에서 읽기
+        const userId = sessionStorage.getItem("userId");
+        const uuId = sessionStorage.getItem("uuId");
+
+        if (userId && uuId) {
+            setUser({userId, uuId});
+        } else {
+            // 로그인 안된 상태면 로그인 페이지로 이동
+            window.location.href = "/login";
+        }
+    }, []);
 
     // 현재 날짜 객체
     const today = new Date();
@@ -84,7 +100,7 @@ export default function Main(){
                                 className="profile-image"
 
                             />
-                            <span className="username">나</span>
+                            <span className="userid">{user.uuId}</span>
                         </div>
                         <button className="logout-btn">
                             로그아웃
@@ -121,7 +137,7 @@ export default function Main(){
                                                             className='appointment-add'
                                                             onClick={() => navigate("/meet",
                                                             // 페이지 이동 시 데이터 보내기
-                                                            {state: {month: currentM+1, day: day, weekday: weekdays[di]}})}
+                                                            {state: {year: currentY, month: currentM+1, day: day, weekday: weekdays[di]}})}
                                                         >
                                                             +
                                                         </button>
