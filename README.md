@@ -1,4 +1,4 @@
 ### 개발 상세
-Front: HTML&CSS / React  
-Back: FastAPI / Spring Boot  
+Front: React  
+Back: Spring Boot  
 DB: MySQL
