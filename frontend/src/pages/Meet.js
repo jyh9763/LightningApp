@@ -93,7 +93,7 @@ export default function Meet(){
                                     className="profile-image"
 
                                 />
-                                <span className="username">{uuId}</span>
+                                <span className="userid">{uuId}</span>
                             </div>
                             <button className="logout-btn">
                                 로그아웃

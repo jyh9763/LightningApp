@@ -110,9 +110,14 @@ export default function Main(){
 
                 {/* 달력 영역 */}
                 <div className="calendar-container">
-                    <h2 className="calendar-month">{currentY}년 {currentM+1}월</h2>
+                    <div className="calendar-header">
+                        <button className="before-month">&lt;</button>
+                        <h2 className="calendar-month">{currentY}년 {currentM+1}월</h2>
+                        <button className="before-month">&gt;</button>
+                    </div>
+
                     <div className="calendar">
-                        <div className="calendar-header">
+                        <div className="calendar-week">
                             <div className="weekdays">
                                 {weekdays.map((weekday, wdi) => (
                                     <div key={wdi} className="main-weekday">{weekday}</div>

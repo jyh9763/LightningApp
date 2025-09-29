@@ -143,8 +143,28 @@ body {
     overflow: auto;
 }
 
+/* 달력 헤더 */
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 200px;
+    margin: 0 auto 20px;
+}
+
+.before-month,
+.next-month {
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
 .calendar-month {
-    margin-bottom: 20px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    flex: 1;  /* 중앙 영역을 넓게 차지하도록 */
 }
 
 .calendar {
@@ -154,8 +174,8 @@ body {
     overflow: hidden;
 }
 
-/* 달력 헤더 */
-.calendar-header {
+/* 달력 요일 헤더 */
+.calendar-week {
     background-color: #f8f9fa;
     border-bottom: 1px solid #e0e0e0;
 }

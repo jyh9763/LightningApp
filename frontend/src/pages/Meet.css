@@ -422,9 +422,10 @@ body {
     transform: scale(1.1);
 }
 
-.username {
+.userid {
     font-size: 14px;
     color: #666;
+    font-weight: 600;
 }
 
 /* 상단 날짜 박스 */
