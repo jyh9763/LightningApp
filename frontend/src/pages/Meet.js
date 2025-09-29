@@ -101,15 +101,17 @@ export default function Meet(){
                         </div>
                     </div>
 
-                    {/* 상단 날짜 박스 */}
-                    <div className="date-box">
-                        <div className="month">{month}월</div>
-                        <div className="day">{day}</div>
-                        <div className="weekday">({weekday})</div>
-                    </div>
+
 
                     {/* 약속 만들기 폼 */}
                     <div className="meet-form-container">
+                        {/* 상단 날짜 박스 */}
+                        <div className="date-box">
+                            <div className="month">{month}월</div>
+                            <div className="day">{day}</div>
+                            <div className="weekday">({weekday})</div>
+                        </div>
+
                         <div className="meet-form">
                             {/* 제목 입력 */}
                             <div className="form-group">

@@ -130,25 +130,32 @@ export default function Main(){
                                             className={`calendar-cell ${day ? "": "empty"}`}
                                         >
                                             <div className="date-row">
-                                                {day && (
-                                                    <>  {/* 버튼과 날짜 두 개를 동시에 렌더링하려면 하나의 부모로 묶는 작업 필요
-                                                        -> dom 쓰고싶지 않은데 하나로 묶고싶을 때 사용 */}
-                                                        <button
-                                                            className='appointment-add'
-                                                            onClick={() => navigate("/meet",
-                                                            // 페이지 이동 시 데이터 보내기
-                                                            {state: {year: currentY, month: currentM+1, day: day, weekday: weekdays[di]}})}
-                                                        >
-                                                            +
-                                                        </button>
-                                                        <div className={`date-number ${
-                                                           day === todayD && currentM === todayM && currentY === todayY
-                                                           ? "today": ""
-                                                        }`}>
-                                                            {day}
-                                                        </div>
-                                                    </>
-                                                )}
+                                                {day && (() => {
+                                                    const selectedDate = new Date(currentY, currentM, day);
+                                                    const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+                                                        return(
+                                                            <>  {/* 버튼과 날짜 두 개를 동시에 렌더링하려면 하나의 부모로 묶는 작업 필요
+                                                                -> dom 쓰고싶지 않은데 하나로 묶고싶을 때 사용 */}
+                                                                <div className={`date-number ${
+                                                                   day === todayD && currentM === todayM && currentY === todayY
+                                                                   ? "today": ""
+                                                                }`}>
+                                                                    {day}
+                                                                </div>
+
+                                                                {selectedDate >= todayDate && (
+                                                                    <button
+                                                                        className='appointment-add'
+                                                                        onClick={() => navigate("/meet",
+                                                                        // 페이지 이동 시 데이터 보내기
+                                                                        {state: {year: currentY, month: currentM+1, day: day, weekday: weekdays[di]}})}
+                                                                    >
+                                                                        +
+                                                                    </button>
+                                                                )}
+                                                            </>
+                                                        );
+                                                })()}
                                             </div>
                                         </div>
                                     ))}

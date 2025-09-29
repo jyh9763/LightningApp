@@ -381,46 +381,6 @@ body {
     position: relative;
 }
 
-/* 상단 날짜 박스 */
-.date-box {
-    position: relative;
-    width: 120px;
-    height: 140px;
-    background-color: white;
-    border: 2px solid #ddd;
-    border-radius: 12px;
-    padding: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-
-}
-
-.month {
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    font-size: 18px;
-    color: #333;
-}
-
-.day {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 50px;
-    font-weight: bold;
-    color: #333;
-}
-
-.weekday {
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    font-size: 15px;
-    color: #333;
-    background-color: white;
-}
-
 /* 헤더 영역 */
 .header {
     display: flex;
@@ -467,13 +427,56 @@ body {
     color: #666;
 }
 
+/* 상단 날짜 박스 */
+.date-box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 120px;
+    height: 140px;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+}
+
+.month {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.day {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    font-weight: bold;
+    color: #333;
+}
+
+.weekday {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 15px;
+    color: #333;
+    background-color: white;
+}
+
 /* 약속 만들기 폼 컨테이너 */
 .meet-form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 55vh;
+    height: 90vh;
     padding: 40px;
+    position: relative;
 }
 
 .meet-form {
@@ -560,7 +563,7 @@ body {
 }
 
 .time-separator {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 600;
     color: #666;
 }
@@ -605,152 +608,4 @@ body {
     background-color: #666;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(74, 74, 74, 0.3);
-}
-
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 10px 20px;
-    }
-
-    .sidebar-menu {
-        display: flex;
-        gap: 20px;
-        flex: none;
-    }
-
-    .menu-item {
-        border-bottom: none;
-        padding: 10px 0;
-        white-space: nowrap;
-    }
-
-    .date-box {
-        position: static;
-        transform: none;
-        margin: 20px auto;
-        width: fit-content;
-    }
-
-    .profile-section {
-        position: static;
-        justify-content: center;
-        margin: 20px 0;
-    }
-
-    .profile-image-large {
-        width: 60px;
-        height: 60px;
-    }
-
-    .username {
-        font-size: 16px;
-    }
-
-    .meet-form-container {
-        height: auto;
-        padding: 20px;
-    }
-
-    .meet-form {
-        padding: 30px 20px;
-    }
-
-    .button-group {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .btn-save,
-    .btn-cancel {
-        width: 100%;
-    }
-}
-
-/* 폼 입력 필드들 (실제 구현 시 추가할 요소들) */
-.form-input,
-.form-select {
-    width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: border-color 0.3s;
-}
-
-.form-input:focus,
-.form-select:focus {
-    outline: none;
-    border-color: #4a90e2;
-    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
-}
-
-/* 시간 선택 영역 */
-.time-selector {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.time-select {
-    padding: 8px 12px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    background-color: white;
-}
-
-.time-separator {
-    font-size: 16px;
-    font-weight: 500;
-    color: #666;
-}
-
-/* 폼 입력 필드들 (실제 구현 시 추가할 요소들) */
-.form-input,
-.form-select {
-    width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: border-color 0.3s;
-}
-
-.form-input:focus,
-.form-select:focus {
-    outline: none;
-    border-color: #4a90e2;
-    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
-}
-
-/* 시간 선택 영역 */
-.time-selector {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.time-select {
-    padding: 8px 12px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    background-color: white;
-}
-
-.time-separator {
-    font-size: 16px;
-    font-weight: 500;
-    color: #666;
 }
