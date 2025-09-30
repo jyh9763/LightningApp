@@ -5,6 +5,7 @@ import Main from "./pages/Main";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Meet from "./pages/Meet";
+import Meetlist from "./pages/Meetlist";
 
 export default function App() {
     const [user, setUser] = useState({userId: null, uuId: null});
@@ -26,6 +27,9 @@ export default function App() {
 
                 {/* 약속 잡는 페이지 */}
                 <Route path="/meet" element={<Meet />} />
+
+                {/* 약속 리스트 페이지 */}
+                <Route path="/meetlist" element={<Meetlist />} />
             </Routes>
         </BrowserRouter>
     </div>

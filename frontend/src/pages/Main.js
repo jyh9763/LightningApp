@@ -82,7 +82,7 @@ export default function Main(){
                         <span>나의 친구</span>
                     </div>
                     <div className="menu-item">
-                        <span>나의 약속</span>
+                        <span onClick={() => navigate("/meetlist")}>나의 약속</span>
                     </div>
                 </div>
             </div>

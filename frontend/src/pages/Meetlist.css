@@ -1,0 +1,272 @@
+/* 전체 레이아웃 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* 사이드바 */
+.sidebar {
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.76);
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    margin-bottom: 30px;
+}
+
+.notification-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #666;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.notification-icon:hover {
+    background-color: #777;
+}
+
+.bell {
+    font-size: 24px;
+}
+
+.sidebar-menu {
+    flex: 1;
+}
+
+.menu-item {
+    padding: 15px 0;
+    cursor: pointer;
+    border-bottom: 1px solid #666;
+    transition: color 0.3s, background-color 0.3s, padding-left 0.3s;
+    font-size: 16px;
+    text-align: center;
+}
+
+.menu-item:hover, .menu-item.active {
+    color: #fff;
+    background-color: #333;
+}
+
+/* 메인 컨텐츠 */
+.main-content {
+    flex: 1;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* 헤더 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.page-title-main {
+    font-size: 24px;
+    font-weight: 300;
+    color: #666;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.profile-image:hover {
+    transform: scale(1.1);
+}
+
+.userid {
+    font-size: 16px;
+    color: #666;
+    font-weight: 600;
+}
+
+.logout-btn {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.logout-btn:hover {
+    color: #000;
+}
+
+/* 약속 현황 컨테이너 */
+.appointments-container {
+    padding: 30px 40px;
+}
+
+.date-group {
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.date-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.cards-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.appointment-card {
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    padding: 20px;
+    width: 280px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.appointment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.card-details {
+    flex-grow: 1;
+}
+
+.card-details p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+}
+
+.card-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-accept, .btn-decline {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: opacity 0.2s;
+}
+
+.btn-accept {
+    background-color: #28a745; /* Green */
+}
+
+.btn-decline {
+    background-color: #dc3545; /* Red */
+}
+
+.btn-accept:hover, .btn-decline:hover {
+    opacity: 0.85;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px;
+    }
+
+    .sidebar-header {
+        display: none; /* 모바일에서는 종 아이콘 숨기기 */
+    }
+
+    .sidebar-menu {
+        display: flex;
+        gap: 20px;
+        flex: 1;
+        justify-content: center;
+    }
+
+    .menu-item {
+        border-bottom: none;
+        padding: 10px;
+    }
+
+    .appointments-container {
+        padding: 20px;
+    }
+
+    .content-title {
+        font-size: 24px;
+    }
+
+    .appointment-card {
+        width: 100%; /* 모바일에서는 카드 가로 꽉 채우기 */
+    }
+}
